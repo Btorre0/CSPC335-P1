@@ -5,30 +5,32 @@ def starting_city(distances, fuel, mpg):
 
     n = len(distances)
 
+    # check if the input is valid:
     if n == 0:
         return -1
     if len(fuel) != n:
         return
     
-
-    for i in range(n):
-        # checking if actual distance that can be cover if greater than city
-        available_fuel = fuel[i] * mpg
-        fuel_balance = available_fuel - distances[i]
+    # determine if a city can be a valid starting point:
+    for city in range(n):
+        available_fuel = fuel[city] * mpg
+        fuel_balance = available_fuel - distances[city]
         
         total_fuel += fuel_balance
         current_fuel += fuel_balance
-       
+      
         if current_fuel < 0:
-            start_city = i + 1
+            start_city = city + 1
             current_fuel = 0
+            
+    # checks if there is enough fuel to travel the entire circuit:
     if total_fuel >= 0:
         return start_city
     else:
         return -1
 
 
-# test cases
+##### test cases #####
 
 # test 1:
 city_distances = [5, 25, 15, 10, 15]
