@@ -1,0 +1,24 @@
+
+Define the city starting with three variable
+    Initialize:
+        total_balance <- 0
+        current_balance <- 0
+        start_city <- 0
+        n <- length of distances
+
+    For i from 0 to n - 1 do:
+        fuel_available <- fuel[i] * mpg
+        fuel_required <- distances[i]
+        fuel_difference <- fuel_available - fuel_required
+
+        total_balance <- total_balance + fuel_difference
+        current_balance <- current_balance + fuel_difference
+
+    If current_balance < 0 then:
+            start_city <- i + 1
+            current_balance <- 0
+
+    If total_balance ≥ 0 then:
+        Return start_city
+    Else:
+        Return -1
